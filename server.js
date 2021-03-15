@@ -21,7 +21,7 @@ mongoose.connection.once('open', () => {
 	console.log('connected to mongoose! ~~~')
 });
 
-whitelist and cors
+// whitelist and cors
 const whitelist = ['http://localhost: 3000'];
 const corsOptions = {
 	origin: function(origin, callback) {
