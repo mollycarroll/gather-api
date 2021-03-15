@@ -7,6 +7,34 @@ const Event = require('../models/event_model.js');
 
 /*~~~~~ routes ~~~~~*/
 
+// seed
+events.get('/seed', (req, res) => {
+	Event.create([{
+			Creator: 'Brian Spoonhat',
+			Title: 'Mt Rushmore Trip',
+			Date: '07/02/2021 - 07/8/2021',
+			Category: 'Nature',
+			Description: 'Invite Greg and Erica to a getaway to Mt. Rushmore for July 4th weekend. We can rent a cabin at Cabinhood, book a grill at this local campground and go on a few trails.'
+		},
+		{
+			Creator: 'Simone R.',
+			Title: 'Bowling Night',
+			Date: '04/13/2021',
+			Category: 'Night-out',
+			Description: 'The bowling alley is open again! Reach out to the group for a night out on the town to Bowling Aces. Call ahead to make a reservation for the evening of April 13th.'
+		},
+		{
+			Creator: 'Russell Sherald',
+			Title: 'Trivia Night',
+			Date: '07/21/2021',
+			Category: 'Night-out',
+			Description: 'Invite the guys over for a trivia night. Pick up popular board game.'
+		}
+	], (err, data) => {
+		res.redirect('/events');
+	});
+});
+
 // index
 events.get('/', (req, res) => {
 	Event.find({}, (err, foundEvents) => {
