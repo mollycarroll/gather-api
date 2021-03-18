@@ -37,24 +37,23 @@ events.get('/seed', (req, res) => {
 
 // index
 events.get('/', (req, res) => {
-	Event.find({}, (err, foundEvents) => {
-		if(err) {
+	Event.find({}, (error, foundEvents) => {
+		if(error) {
 			res.status(400).json({ error: err.message });
 		}
 		res.status(200).json(foundEvents);
 	});
 });
 
-// show route
+// show
 events.get('/:id', (req, res) => {
 	Event.findById(req.params.id, (error, foundEvent) => {
-		if (error) {
-			res.status(400).json({ error: error.message });
-		} else {
-			res.status(200).json(foundEvent)
+		if(error) {
+			res.status(400).json({ error: err.message });
 		}
-	})
-})
+		res.status(200).json(foundEvent);
+	});
+});
 
 // create
 events.post('/', async (req, res) => {
@@ -68,8 +67,8 @@ events.post('/', async (req, res) => {
 
 // update
 events.put('/:id', (req, res) => {
-	Event.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedEvent) => {
-		if(err) {
+	Event.findByIdAndUpdate(req.params.id, req.body, { new: true }, (error, updatedEvent) => {
+		if(error) {
 			res.status(400).json({ error: err.message });
 		}
 		res.status(200).json(updatedEvent);
@@ -78,8 +77,8 @@ events.put('/:id', (req, res) => {
 
 // delete
 events.delete('/:id', (req, res) => {
-	Event.findByIdAndRemove(req.params.id, (err, deletedEvent) => {
-		if(err) {
+	Event.findByIdAndRemove(req.params.id, (error, deletedEvent) => {
+		if(error) {
 			res.status(400).json({ error: err.message });
 		}
 		res.status(200).json(deletedEvent);
