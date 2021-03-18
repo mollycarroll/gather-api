@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const app = express();
-const port = 3003;
+const port = process.env.PORT || 3003;
 
 const dbname = 'events';
 
@@ -14,9 +14,10 @@ app.use(express.json());
 mongoose.connection.on('error', err => console.log(err.message + ' is Mongo not running?'));
 mongoose.connection.on('disconnected', () => console.log('mongo disconnected'));
 
+const MONGODB_URI = process.env.MONGODB_URI || `mongodb://localhost:27017/${dbname}`
 
 // connect db
-mongoose.connect(`mongodb://localhost:27017/${dbname}`);
+mongoose.connect(MONGODB_URI);
 mongoose.connection.once('open', () => {
 	console.log('connected to mongoose! ~~~')
 });
