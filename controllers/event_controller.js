@@ -59,7 +59,7 @@ events.get('/:id', (req, res) => {
 events.post('/', async (req, res) => {
 	Event.create(req.body, (error, createdEvent) => {
 		if(error) {
-			res.status(400).json({ error: err.message });
+			res.status(400).json({ error: error.message });
 		}
 		res.status(200).send(createdEvent);
 	});
