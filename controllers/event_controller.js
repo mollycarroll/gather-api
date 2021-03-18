@@ -45,7 +45,7 @@ events.get('/', (req, res) => {
 	});
 });
 
-// show route
+// show
 events.get('/:id', (req, res) => {
 	Event.findById(req.params.id, (error, foundEvent) => {
 		if (error) {

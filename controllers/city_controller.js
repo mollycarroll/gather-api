@@ -3,7 +3,6 @@ const cities = express.Router()
 
 // models
 const City = require('../models/cities.js');
-const Event = require('../models/event_model.js');
 
 // seed
 
