@@ -40,6 +40,8 @@ app.use(cors());
 // controller
 const eventsController = require('./controllers/event_controller.js');
 app.use('/events', eventsController);
+const cityController = require('./controllers/city_controller.js');
+app.use('/cities', cityController);
 
 // listener
 app.listen(port, () => {
