@@ -17,13 +17,14 @@ mongoose.connection.on('disconnected', () => console.log('mongo disconnected'));
 const MONGODB_URI = process.env.MONGODB_URI || `mongodb://localhost:27017/${dbname}`
 
 // connect db
+console.log(MONGODB_URI)
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 mongoose.connection.once('open', () => {
 	console.log('connected to mongoose! ~~~')
 });
 
 // whitelist and cors
-const whitelist = ['http://localhost: 3000', 'https://mighty-savannah-40031.herokuapp.com/'];
+const whitelist = ['http://localhost:3000', 'https://mighty-savannah-40031.herokuapp.com/'];
 const corsOptions = {
 	origin: function(origin, callback) {
 		if(whitelist.indexOf(origin) !== -1) {
