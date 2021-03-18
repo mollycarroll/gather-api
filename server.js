@@ -23,7 +23,7 @@ mongoose.connection.once('open', () => {
 });
 
 // whitelist and cors
-const whitelist = ['http://localhost: 3000'];
+const whitelist = ['http://localhost: 3000', 'https://mighty-savannah-40031.herokuapp.com/'];
 const corsOptions = {
 	origin: function(origin, callback) {
 		if(whitelist.indexOf(origin) !== -1) {
