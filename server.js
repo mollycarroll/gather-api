@@ -17,6 +17,7 @@ mongoose.connection.on('disconnected', () => console.log('mongo disconnected'));
 const MONGODB_URI = process.env.MONGODB_URI || `mongodb://localhost:27017/${dbname}`
 
 // connect db
+console.log(MONGODB_URI)
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 mongoose.connection.once('open', () => {
 	console.log('connected to mongoose! ~~~')
@@ -34,11 +35,13 @@ const corsOptions = {
 	}
 }
 
-app.use(cors(corsOptions));
+app.use(cors());
 
 // controller
 const eventsController = require('./controllers/event_controller.js');
 app.use('/events', eventsController);
+const cityController = require('./controllers/city_controller.js');
+app.use('/cities', cityController);
 
 // listener
 app.listen(port, () => {
